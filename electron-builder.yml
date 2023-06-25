@@ -13,6 +13,7 @@ files:
   - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
 asarUnpack:
   - resources/**
+  - node_modules/ffmpeg-static/**
 afterSign: build/notarize.js
 win:
   executableName: anime-player

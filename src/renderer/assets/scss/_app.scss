@@ -1,0 +1,111 @@
+$app-bg-color: #11101d;
+
+.app {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: $title-bar-height 1fr;
+  grid-template-areas:
+    "titlebar titlebar"
+    "sidebar main"
+    "sidebar main";
+  background: $app-bg-color;
+}
+
+.titlebar {
+  grid-area: titlebar;
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 0.7rem;
+
+  &:not(.focused) {
+    opacity: 0.5;
+    background: #181b28;
+  }
+
+  .draggable {
+    width: 100%;
+    -webkit-app-region: drag;
+  }
+
+  .btn {
+    color: white;
+    width: 42px;
+    font-size: 0.8rem;
+    border-radius: 0;
+    --bs-btn-focus-shadow-rgb: none;
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    border-color: transparent;
+    &:hover,
+    &:focus {
+      background-color: rgba(white, 0.1);
+    }
+    &:active {
+      background-color: rgba(white, 0.2);
+    }
+  }
+  .btn-danger {
+    font-size: 1rem;
+    &:not(:hover) {
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+}
+
+.sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  width: $side-bar-width;
+  z-index: 99;
+  transition: all 0.5s ease;
+  position: relative;
+
+  // &.open {
+  //   width: $side-bar-expand-size;
+  // }
+
+  .icons {
+    display: flex;
+    flex-direction: column;
+    background-color: $app-bg-color;
+  }
+
+  .icons button {
+    width: $side-bar-width;
+    height: $side-bar-width;
+    border-radius: 0;
+
+    &.dark {
+      background-color: rgba(#000000, 0.8);
+    }
+
+    &:hover,
+    &:focus {
+      background: rgba(white, 0.1);
+    }
+
+    &.active {
+      background-color: var(--primary-theme-bg-color);
+      color: var(--primary-theme-color) !important;
+    }
+  }
+}
+
+.main {
+  grid-area: main;
+  background: rgb(var(--bs-primary-rgb));
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}

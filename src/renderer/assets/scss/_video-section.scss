@@ -1,0 +1,241 @@
+// .video-section {
+// }
+.autoplay--btn {
+  $ball-size: 25px;
+  $autoplay-track-width: 50px;
+
+  .checkbox {
+    position: absolute;
+    margin-top: 4px;
+    opacity: 0;
+
+    &:not(:checked) ~ .label i::before {
+      content: "\f04c";
+      margin-left: 2px;
+    }
+
+    &:not(:checked) ~ .label .ball {
+      translate: $autoplay-track-width - $ball-size;
+    }
+
+    &:checked ~ .label .ball {
+      i::before {
+        content: "\f04b";
+      }
+    }
+  }
+
+  .label {
+    height: 15px;
+    width: $autoplay-track-width;
+    position: relative;
+
+    background-color: var(--bs-dark);
+    border-radius: 50px;
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .ball {
+    height: $ball-size;
+    width: $ball-size;
+    position: absolute;
+
+    color: var(--bs-dark);
+    background-color: white;
+    border-radius: 50%;
+
+    translate: 0px;
+    transition: translate 0.2s ease;
+  }
+}
+
+// FIXME:
+.icons-container {
+  $btn-size: 50px;
+  button {
+    width: $btn-size;
+    height: $btn-size;
+    position: relative;
+
+    color: var(--bs-body-color);
+    background-color: transparent;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    outline: none;
+    border: transparent;
+    border-radius: 10px;
+
+    @include center;
+    flex-direction: column;
+    user-select: none;
+
+    i {
+      @include center;
+      width: $btn-size;
+      height: $btn-size;
+      font-size: 22px;
+    }
+
+    span {
+      width: max-content;
+      font-size: 11px;
+    }
+  }
+}
+
+.playlist {
+  max-height: 79vh;
+  overflow: auto;
+
+  .cover-image {
+    aspect-ratio: 133/84;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-right: 0.5rem;
+
+    .duration {
+      position: absolute;
+      margin: 4px;
+      right: 0;
+      bottom: 0px;
+      opacity: 0.5;
+      font-weight: 400;
+      border-radius: 0;
+    }
+  }
+
+  .item-details {
+    width: 100%;
+    padding: 0.25rem 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    word-wrap: break-word;
+    word-break: break-word;
+
+    & > :first-child {
+      overflow-y: hidden;
+      margin-bottom: 0.6rem;
+    }
+  }
+
+  .badges {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .badge {
+    user-select: none;
+    cursor: pointer;
+  }
+}
+
+.playlist--item {
+  margin: 0.5rem 0;
+  padding: 0.5rem 0;
+  display: flex;
+  height: 100px;
+
+  .status {
+    @include center;
+    background: var(--bs-dark);
+    text-align: center;
+    height: 100%;
+    opacity: 0;
+  }
+
+  .play-status,
+  .spinner {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .spinner {
+    bottom: 50%;
+    right: 50%;
+    translate: 50% 50%;
+  }
+
+  &.loading.active .status .spinner {
+    scale: 0.5;
+    right: 0;
+    bottom: 0;
+    translate: 0 0;
+  }
+
+  &:hover,
+  &.active,
+  &.loading {
+    .status {
+      opacity: 0.5;
+    }
+  }
+
+  &:hover .play-status > p::before {
+    content: "Play Now";
+  }
+
+  &.active .play-status > p::before {
+    content: "Now Playing";
+  }
+
+  .spinner,
+  .play-status,
+  &.loading:hover:not(.active) .play-status {
+    display: none;
+  }
+
+  &.active .play-status,
+  &:hover .play-status,
+  &.loading .status .spinner {
+    display: block;
+  }
+}
+
+// Video-js
+
+video {
+  outline: none;
+}
+
+.vjs-button > .vjs-icon-placeholder:before {
+  font-size: 1.2em;
+  line-height: 2.2;
+}
+
+.video-js {
+  .vjs-volume-bar {
+    margin: 1.1em 0.45em;
+  }
+  .vjs-control-bar {
+    height: 2.5em;
+  }
+  .vjs-time-control {
+    font-size: 0.8em;
+    line-height: 3.2em;
+  }
+}
+
+.vjs-playback-rate .vjs-playback-rate-value {
+  font-size: 1.2em;
+  line-height: 2.2;
+}
+
+.vjs-menu-button-popup .vjs-menu {
+  margin-bottom: 1em;
+}
+
+.vjs-menu li {
+  padding: 0.2em 0;
+  line-height: 1.8em;
+  font-size: 1em;
+}

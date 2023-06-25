@@ -1,0 +1,125 @@
+<div id="search" class="searchbar shadow-sm">
+  <div class="search p-2">
+    <button
+      id="searchSettingsBtn"
+      class="btn btn-light position-absolute end-0 me-1"
+    >
+      <i class="fas fa-gear"></i>
+    </button>
+    <p class="lead text-center mb-2 mt-1">Search</p>
+    <div class="mb-2 d-flex align-items-center" style="font-size: 0.9rem">
+      <i class="fas text-warning fa-folder-open"></i>
+      <p
+        class="font-monospace text-truncate ps-1 m-0"
+        id="searchBarCurrentDirName"
+      >
+        Path (root)
+      </p>
+      <span class="font-monospace">/</span>
+    </div>
+    <div class="input-group mb-1">
+      <input
+        id="searchBar"
+        type="text"
+        class="form-control"
+        placeholder="Search"
+      />
+      <button class="btn btn-dark border-light" title="Change Directory">
+        <!-- <i class="fal fa-folder-magnifying-glass"></i> -->
+        <i class="fal fa-folder"></i>
+      </button>
+    </div>
+  </div>
+  <div class="folders" id="searchBar--folders"></div>
+</div>
+<div id="searchSettings" class="searchbar shadow-sm">
+  <div class="search p-2">
+    <button
+      id="searchSettingsCloseBtn"
+      class="btn btn-light position-absolute end-0 me-2"
+    >
+      <i class="far fa-times"></i>
+    </button>
+    <p class="lead mb-4 my-2">Settings</p>
+    <div style="font-size: 0.8rem">
+      <p class="fs-6 mb-2">Search Properties</p>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="caseSensitive"
+        />
+        <label class="form-check-label" for="caseSensitive">
+          Case Sensitive
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="clearTextAfterSearch"
+        />
+        <label class="form-check-label" for="clearTextAfterSearch">
+          Clear Text After Search
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="enableRegexSearch"
+        />
+        <label class="form-check-label" for="enableRegexSearch">
+          Enable Regex Search
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="highlightSearchText"
+        />
+        <label class="form-check-label" for="highlightSearchText">
+          Highlight Search Text
+        </label>
+      </div>
+      <br />
+      <p class="fs-6 mb-2">Folder Properties</p>
+      <div class="form-check">
+        <input
+          class="form-check-input trimFolderName"
+          type="checkbox"
+          value=""
+          id="trimFolderName"
+        />
+        <label class="form-check-label" for="trimFolderName"> Trim Folder Name</label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="dblClickToOpenFolder"
+        />
+        <label class="form-check-label" for="dblClickToOpenFolder">
+          Double Click to Open Folder
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="showHiddenFolders"
+        />
+        <label class="form-check-label" for="showHiddenFolders">
+          Show Hidden Folders
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

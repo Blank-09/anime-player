@@ -1,0 +1,9 @@
+section#intro {
+  display: grid;
+  place-items: center;
+  user-select: none;
+  svg,
+  img {
+    height: 90vh;
+  }
+}

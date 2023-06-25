@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+@import "config";
+@import "root";
+@import "functions";
+@import "intro";
+@import "app";
+@import "video-section";
+@import "searchBar";
+@import "settings";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  outline-color: transparent;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  --bs-primary-rgb: 228, 233, 247;
+  // background-color: #292d3e;
+}
+
+/* Scroll Bar */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::selection {
+  color: #377dff;
+  background-color: rgba(55, 125, 255, 0.1);
+}
+
+.titlebar.focused ~ .main::selection {
+  color: var(--bs-dark);
+  background-color: rgba(var(--bs-dark), 0.2);
+}
+
+body.darkMode {
+  --bs-primary-rgb: 10, 10, 10;
+  --bs-body-color: rgb(236, 236, 236);
+  --bs-body-bg: var(--bs-dark);
+  --primary-theme-color: var(--bs-dark);
+  --bs-dark-rgb: 220, 220, 220;
+}
+
+.outline-none {
+  outline: none;
+}
+
+.absolute-center {
+  @include center;
+}
+
+.text-small {
+  font-size: 0.7rem;
+}
+
+.tooltip {
+  animation: tooltip ease 0.3s;
+}
+
+@keyframes tooltip {
+  0% {
+    top: -20px;
+    opacity: 0;
+  }
+  100% {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+.tooltip-inner {
+  color: black;
+  background-color: white;
+}
+
+.bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow::before,
+.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: white;
+}

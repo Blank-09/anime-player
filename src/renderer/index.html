@@ -1,111 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Electron</title>
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
-    />
-
-    <link href="./assets/styles.css" type="text/css" rel="stylesheet" />
+    <title>Anime Player</title>
+    <link rel="stylesheet" href="./fontawesome/v6.4.0/css/all.css" />
   </head>
 
-  <body>
-    <div class="container">
-      <ul class="versions">
-        <li class="electron-version"></li>
-        <li class="chrome-version"></li>
-        <li class="node-version"></li>
-        <li class="v8-version"></li>
-      </ul>
-
-      <img class="hero-logo" src="./assets/icons.svg" />
-      <h2 class="hero-text">You've successfully created an Electron project with TypeScript</h2>
-      <p class="hero-tagline">Please try pressing <code>F12</code> to open the devTool</p>
-
-      <div class="links">
-        <div class="link-item">
-          <a target="_blank" href="https://electron-vite.org">Documentation</a>
+  <body class="darkMode">
+    <div class="app">
+      <nav class="titlebar focused" id="titlebar">
+        <div class="draggable h-100">
+          <img
+            src="./logo.svg"
+            class="ms-1"
+            style="padding: 0.4rem !important"
+            height="28"
+            width="28"
+          />
+          <span>Anime Player</span>
         </div>
-        <div class="link-item link-dot">•</div>
-        <div class="link-item">
-          <a target="_blank" href="https://github.com/alex8088/electron-vite">Getting Help</a>
+        <div class="d-inline-flex">
+          <button class="btn btn-secondary" title="Minimize" id="minimizeBtn">
+            <i class="fal fa-window-minimize"></i>
+          </button>
+          <button class="btn btn-secondary" title="Maximize" id="maxResBtn">
+            <i class="fal fa-window-maximize"></i>
+            <!-- <i class="fal fa-window-restore"></i> -->
+          </button>
+          <button class="btn btn-danger" title="Close" id="closeBtn">
+            <i class="fal fa-xmark"></i>
+          </button>
         </div>
-        <div class="link-item link-dot">•</div>
-        <div class="link-item">
-          <a
-            target="_blank"
-            href="https://github.com/alex8088/quick-start/tree/master/packages/create-electron"
+      </nav>
+      <div class="sidebar d-none d-md-flex">
+        <div class="icons">
+          <button
+            id="toggle-search-bar-btn"
+            class="btn link-light absolute-center dark"
+            data-bs-toggle-tooltip
+            data-bs-placement="right"
+            data-bs-title="Search"
           >
-            create-electron
-          </a>
+            <i class="fal fa-search fs-6"></i>
+            <span class="visually-hidden">Search</span>
+          </button>
+          <button
+            class="btn link-light absolute-center"
+            data-bs-toggle-tooltip
+            data-bs-placement="right"
+            data-bs-title="Home"
+          >
+            <i class="fal fa-home fs-6"></i>
+            <!-- <i class="fa-sharp fa-solid fa-house"></i> -->
+            <span class="visually-hidden">Home</span>
+          </button>
+          <button
+            class="btn link-light absolute-center active"
+            data-bs-toggle-tooltip
+            data-bs-placement="right"
+            data-bs-title="Videos"
+          >
+            <i class="fal fa-play fs-6"></i>
+            <span class="visually-hidden">Video</span>
+          </button>
+          <button
+            class="btn link-light absolute-center"
+            data-bs-toggle-tooltip
+            data-bs-placement="right"
+            data-bs-title="Music"
+          >
+            <i class="fal fa-music fs-6"></i>
+            <span class="visually-hidden">Music</span>
+          </button>
+          <button
+            class="btn link-light absolute-center"
+            data-bs-toggle-tooltip
+            data-bs-placement="right"
+            data-bs-title="Bookmarks"
+          >
+            <i class="fal fa-bookmark fs-6"></i>
+            <span class="visually-hidden">Bookmarks</span>
+          </button>
+          <button
+            class="btn link-light absolute-center mb-auto"
+            data-bs-toggle-tooltip
+            data-bs-placement="right"
+            data-bs-title="Favorites"
+          >
+            <i class="fal fa-heart fs-6"></i>
+            <span class="visually-hidden">Favorites</span>
+          </button>
+          <div class="dropend border-top">
+            <button
+              class="btn link-light absolute-center border-0"
+              data-bs-toggle="dropdown"
+              data-bs-toggle-tooltip
+              data-bs-placement="right"
+              data-bs-title="Manage"
+              id="dropdown-settings"
+              aria-expanded="false"
+            >
+              <i class="fal fa-gear fs-6"></i>
+              <span class="visually-hidden">Manage</span>
+              <ul class="dropdown-menu shadow" aria-labelledby="dropdown-settings">
+                <li>
+                  <a class="dropdown-item small" href="#">New project...</a>
+                </li>
+                <li><a class="dropdown-item small" href="#">Settings</a></li>
+                <li><a class="dropdown-item small" href="#">Profile</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item small" href="#">Sign out</a></li>
+              </ul>
+            </button>
+          </div>
         </div>
       </div>
-
-      <div class="features">
-        <div class="feature-item">
-          <article>
-            <h2 class="title">Configuring</h2>
-            <p class="detail">
-              Config with <span>electron.vite.config.ts</span> and refer to the
-              <a target="_blank" href="https://electron-vite.org/config">config guide</a>.
-            </p>
-          </article>
-        </div>
-        <div class="feature-item">
-          <article>
-            <h2 class="title">HMR</h2>
-            <p class="detail">
-              Edit <span>src/renderer</span> files to test HMR. See
-              <a target="_blank" href="https://electron-vite.org/guide/hmr.html">docs</a>.
-            </p>
-          </article>
-        </div>
-        <div class="feature-item">
-          <article>
-            <h2 class="title">Hot Reloading</h2>
-            <p class="detail">
-              Run <span>'electron-vite dev --watch'</span> to enable. See
-              <a target="_blank" href="https://electron-vite.org/guide/hot-reloading.html">docs</a>.
-            </p>
-          </article>
-        </div>
-        <div class="feature-item">
-          <article>
-            <h2 class="title">Debugging</h2>
-            <p class="detail">
-              Check out <span>.vscode/launch.json</span>. See
-              <a target="_blank" href="https://electron-vite.org/guide/debugging.html">docs</a>.
-            </p>
-          </article>
-        </div>
-        <div class="feature-item">
-          <article>
-            <h2 class="title">Source Code Protection</h2>
-            <p class="detail">
-              Supported via built-in plugin <span>bytecodePlugin</span>. See
-              <a target="_blank" href="https://electron-vite.org/guide/source-code-protection.html">
-                docs
-              </a>
-              .
-            </p>
-          </article>
-        </div>
-        <div class="feature-item">
-          <article>
-            <h2 class="title">Packaging</h2>
-            <p class="detail">
-              Use
-              <a target="_blank" href="https://www.electron.build">electron-builder</a>
-              and pre-configured to pack your app.
-            </p>
-          </article>
-        </div>
-      </div>
+      <div class="main" id="root"></div>
     </div>
 
-    <script type="module" src="./src/renderer.ts"></script>
+    <script defer src="./src/main.js" type="module"></script>
+    <script defer src="./src/vendor.ts" type="module"></script>
   </body>
 </html>
