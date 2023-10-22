@@ -19,6 +19,7 @@ export default class VideoListItem {
     this.element = createElement('div', {
       id: id.toString(),
       className: 'playlist--item loading',
+      dataset: { path },
       innerHTML: replaceVariables(templates.template, {
         $name: name,
         $extension: ext.slice(1),
@@ -26,5 +27,9 @@ export default class VideoListItem {
         $dimension: '640x360'
       })
     })
+  }
+
+  public async setImage(): Promise<void> {
+    throw new Error('Method not implemented.')
   }
 }

@@ -1,4 +1,7 @@
-import { BrowserWindow, ipcMain as ipc, shell } from 'electron'
+import { BrowserWindow, dialog, ipcMain as ipc, shell } from 'electron'
+import { screenshot, createVTTFiles } from './video'
+import { ScreenshotsConfig } from 'fluent-ffmpeg'
+import { VTTOptions } from './video/vtt'
 
 export default function handler(window: BrowserWindow): void {
   //
@@ -40,5 +43,29 @@ export default function handler(window: BrowserWindow): void {
 
   window.on('maximize', () => {
     window.webContents.send('win:state', 'maximize')
+  })
+
+  // Open Dialog
+
+  ipc.handle('open:dialog', async () => {
+    // Open folder
+    const result = await dialog.showOpenDialog(window, {
+      properties: ['openDirectory'],
+      title: 'Select a folder',
+      buttonLabel: 'Open',
+      defaultPath: 'D:\\Anime\\'
+    })
+
+    return result.filePaths
+  })
+
+  // Ffmpeg
+
+  ipc.handle('ffmpeg:screenshot', async (_e, path: string, options: ScreenshotsConfig) => {
+    await screenshot(path, options)
+  })
+
+  ipc.handle('ffmpeg:spritesheet', async (_e, path: string, options: VTTOptions) => {
+    return await createVTTFiles(path, options)
   })
 }

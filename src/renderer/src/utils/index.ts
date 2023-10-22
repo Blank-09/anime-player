@@ -55,17 +55,31 @@ export function custom_sort(a: string | PathLike, b: string | PathLike): number 
     const s2 = str2[i].toUpperCase()
 
     if (s1 < s2) return -1
+    if (s1 > s2) return 0
 
-    if (s1 == s2) {
-      const n1 = parseInt(num1[i])
-      const n2 = parseInt(num2[i])
+    const n1 = parseInt(num1[i])
+    const n2 = parseInt(num2[i])
 
-      if (n1 != n2) return n1 - n2
-      else continue
-    }
-
-    return 0
+    if (n1 != n2) return n1 - n2
   }
 
   return 0
+}
+
+function numTo2DigitString(value: number): string {
+  if (value < 10) return '0' + value
+  return value.toString()
+}
+
+export function secondsToTimeFormat(val: number): string {
+  //
+  const sec = numTo2DigitString(Math.floor(val % 60))
+  let min = Math.floor(val / 60)
+
+  if (min < 60) return numTo2DigitString(min) + ':' + sec
+
+  const hour = Math.floor(min / 60)
+  min = min % 60
+
+  return hour + ':' + min + ':' + sec
 }

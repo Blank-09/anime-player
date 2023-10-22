@@ -7,5 +7,15 @@ export default defineConfig({
   preload: {
     plugins: [externalizeDepsPlugin()]
   },
-  renderer: {}
+  renderer: {
+    // define: {
+    //   'process.env.FLUENTFFMPEG_COV': false
+    // }
+    // },
+    // resolve: {
+    //   alias: {
+    //     './lib-cov/fluent-ffmpeg': './lib/fluent-ffmpeg'
+    //   }
+    // }
+  }
 })

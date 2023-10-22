@@ -1,9 +1,12 @@
 import videojs from 'video.js'
+import vttThumbnails from 'videojs-vtt-thumbnails'
 import Player from 'video.js/dist/types/player'
 import { VideoJsHotkeysOptions } from 'videojs-hotkeys'
 
 // @ts-ignore -> VideoJS now doesn't export these options
-import { VideoJsPlayerOptions } from '@types/video.js'
+import type { VideoJsPlayerOptions } from '@types/video.js'
+
+console.log(vttThumbnails)
 
 const hotkeysOptions: VideoJsHotkeysOptions = {
   alwaysCaptureHotkeys: true,
@@ -24,8 +27,19 @@ const options: VideoJsPlayerOptions = {
   playbackRates: [0.5, 1, 1.25, 1.5, 1.75, 2, 2.5, 3, 4],
 
   // Plugins
-  plugins: { hotkeys: hotkeysOptions }
+  plugins: {
+    hotkeys: hotkeysOptions,
+    vttThumbnails: {
+      showTimestamp: true
+    }
+    // vttThumbnails: {
+    //   src: 'http://127.0.0.1:7777/thumb.vtt',
+    //   showTimestamp: false
+    // }
+  }
 }
+
+videojs.registerPlugin('vttThumbnails', vttThumbnails)
 
 async function initializeVideoJs(): Promise<Player> {
   await import('videojs-hotkeys')

@@ -1,5 +1,7 @@
+import { showFoldersOf } from '.'
 import { unhighlight, highlight } from './highlightSearchText'
 import {
+  changeDirBtn,
   folderListDiv,
   searchBarDiv,
   searchInput,
@@ -21,6 +23,13 @@ toggleSearchBtn.onclick = (): void => {
   const isShowing = searchBarDiv.classList.contains('show')
   searchBarDiv.classList[isShowing ? 'remove' : 'add']('show')
   searchSettingsDiv.classList.remove('show')
+}
+
+changeDirBtn.onclick = (): void => {
+  window.electron.ipcRenderer.invoke('open:dialog').then((result: string[]) => {
+    if (result.length == 0) return
+    showFoldersOf(result[0])
+  })
 }
 
 /**

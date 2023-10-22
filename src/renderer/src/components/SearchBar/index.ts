@@ -39,7 +39,7 @@ function onclickHandler(): void {
 currentFolderBtn.addEventListener('click', onclickHandler)
 previousFolderBtn.ondblclick = (): void => showFoldersOf(dirname(currentDir))
 
-function showFoldersOf(path: string): void {
+export function showFoldersOf(path: string): void {
   currentFolderBtn.classList.add('active')
   folderListDiv.classList.remove('searching') // if user searched something
 

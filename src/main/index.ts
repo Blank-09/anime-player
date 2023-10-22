@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, protocol } from 'electron'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
 
 import createWindow from './createWindow'
@@ -15,6 +15,15 @@ app
   .then(async () => {
     // Set app user model id for windows
     electronApp.setAppUserModelId('com.animeplayer.app')
+
+    protocol.registerFileProtocol('priviliged', (request, callback) => {
+      const url = request.url.replace(/^priviliged:\/\//, '')
+      try {
+        return callback(decodeURIComponent(url))
+      } catch (error) {
+        console.error(error)
+      }
+    })
 
     /**
      * Default open or close DevTools by F12 in development

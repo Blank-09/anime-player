@@ -3,6 +3,7 @@
  */
 
 import 'video.js/dist/video-js.min.css'
+import 'videojs-vtt-thumbnails/dist/videojs-vtt-thumbnails.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../assets/scss/main.scss'
 

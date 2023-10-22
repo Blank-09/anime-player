@@ -1,16 +1,15 @@
 <div class="row g-0 p-md-2">
   <div class="col-12 col-md-7 col-lg-8 pe-md-2">
     <div class="video-container rounded overflow-hidden">
-      <video
-        id="vplayer"
-        class="video-js vjs-big-play-centered vjs-layout-huge"
-        playsinline
-      >
+      <video id="vplayer" class="video-js vjs-big-play-centered vjs-layout-huge" playsinline>
         <!-- disableRemotePlayback="1" -->
-        <source src="./Download Manga.mp4" type="video/mp4" />
+        <!-- <source src="./video.mp4" type="video/mp4" /> -->
+        <source
+          src="priviliged://D:\\Anime\\5-toubun no Hanayome∽\\EP.1.v0.1693672827.360p.mp4"
+          type="video/mp4"
+        />
         <p class="vjs-no-js">
-          To view this video please enable JavaScript, and consider upgrading to
-          a web browser that
+          To view this video please enable JavaScript, and consider upgrading to a web browser that
           <a href="https://videojs.com/html5-video-support/" target="_blank"
             >supports HTML5 video</a
           >
@@ -19,9 +18,7 @@
     </div>
     <div class="details-container p-2">
       <div class="heading mt-2">
-        <h3 id="file-name" class="text-break">
-          Stop There! It's Loding you know
-        </h3>
+        <h3 id="file-name" class="text-break">Stop There! It's Loding you know</h3>
         <i class="fas fa-folder"></i>
         <span id="folder-name" class="text-break">One Piece</span>
       </div>
@@ -107,10 +104,7 @@
       <main id="playlist"></main>
       <footer class="d-none">
         <div>
-          <button
-            class="btn btn-light w-100 rounded-0 border"
-            style="font-size: 0.9rem"
-          >
+          <button class="btn btn-light w-100 rounded-0 border" style="font-size: 0.9rem">
             Load more
           </button>
         </div>

@@ -1,3 +1,12 @@
+import { ElectronAPI } from '@electron-toolkit/preload'
+
+declare global {
+  interface Window {
+    electron: ElectronAPI
+    api: unknown
+  }
+}
+
 const ipc = window.electron.ipcRenderer
 
 const maxResBtn = //

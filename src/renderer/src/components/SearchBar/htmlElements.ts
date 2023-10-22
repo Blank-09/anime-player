@@ -29,6 +29,9 @@ export const searchSettingsBtn = //
 export const toggleSearchBtn = //
   document.getElementById('toggle-search-bar-btn')! as HTMLButtonElement
 
+export const changeDirBtn = //
+  searchBarDiv.querySelector('#change-directory-btn')! as HTMLButtonElement
+
 // Input Elements
 export const showHiddenFoldersCheckBox = //
   searchSettingsDiv.querySelector('#showHiddenFolders')! as HTMLInputElement
